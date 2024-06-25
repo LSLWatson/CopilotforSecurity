@@ -1,4 +1,4 @@
-# CopilotforSecurity-Scaler
+# CopilotforSecurity-Optimizer
 Author: Lachlan Watson
 
 This solution will allow you to view and control the Copilot for Security Compute Capacity SCUs based on a schedule.<br>
