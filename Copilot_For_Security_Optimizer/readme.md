@@ -17,23 +17,39 @@ The Copilot for Security Optimizer Sentinel solution offers 3 core features:<br>
 
     The CopilotforSecurityConfig tag holds the information required by the Playbook to apply separate configs across multiple compute capacities.
 
-Here is the structure of the Resource Tag:
+    Here is the structure of the Resource Tag:
 
-```json
-{
-   "SCULimits": {
-        "Min": 1, "Max": 3
-    },
-    "Schedule": {
-        "ActiveDays": [
-            "1", "2", "3", "4"
-        ],
-        "ActiveStartHour": 8,
-        "ActiveEndHour": 18,
-        "TimeOffset": -5
-    }
-}
-```
+    ```json
+        {
+        "SCULimits": {
+                "Min": 1, "Max": 3
+            },
+            "Schedule": {
+                "ActiveDays": [
+                    "1", "2", "3", "4"
+                ],
+                "ActiveStartHour": 8,
+                "ActiveEndHour": 18,
+                "TimeOffset": -5
+            }
+        }
+``` 
+    Definitions are below:
+    - SCULimits
+        - Min: SCU count applied for Low Usage days/times
+        - Max: SCU count applied for High Usage days/times
+    - Schedule
+        - ActiveDays: interger representations of days of the week:
+            - 0 = Sunday
+            - 1 = Monday
+            - 2 = Tuesday
+            - 3 = Wednesday
+            - 4 = Thursday
+            - 5 = Friday
+            - 6 = Saturday
+        - ActiveStartHour: for high usage days, time when Maximum SCU count should be applied
+        - ActiveEndHour: for high usage days, time when Minimum SCU count should be applied
+        - TimeOffset: Hour offset from UTC. This is leveraged to ensure CfS is operating in the desired local time, and is paired with the workbook to validate offset to local comparison.
 
 3. Apply - Finally, the Playbook/LogicApp runs hourly (5 minutes after the hour, to avoid conflict with other automations), to find resources with the CopilotforSecurityConfig tag applied, then for each compute capacity evaluates high usage schedule configuration to determine the correct SCU count, then applies if any changes need to be made.
 
