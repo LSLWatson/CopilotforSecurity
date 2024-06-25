@@ -21,16 +21,16 @@ Here is the structure of the Resource Tag:
 
 ```json
 {
-    'SCULimits': {
-        'Min': 1, 'Max': 3
+   "SCULimits": {
+        "Min": 1, "Max": 3
     },
-    'Schedule': {
-        'ActiveDays': [
-            '1', '2', '3', '4'
+    "Schedule": {
+        "ActiveDays": [
+            "1", "2", "3", "4"
         ],
-        'ActiveStartHour': 8,
-        'ActiveEndHour': 18,
-        'TimeOffset': -5
+        "ActiveStartHour": 8,
+        "ActiveEndHour": 18,
+        "TimeOffset": -5
     }
 }
 ```
