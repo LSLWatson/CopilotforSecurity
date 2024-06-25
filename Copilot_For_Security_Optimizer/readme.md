@@ -1,6 +1,8 @@
 # CopilotforSecurity-Scaler
 Author: Lachlan Watson
 
+In the event of a SOC operating in a more limited capacity than 24x7 such as 8x5 this can mean significant cost savings by allowing the playbook to scale the compute capacity according to the schedule that has been applied.<br>
+
 This solution will allow you to view and control the Copilot for Security Compute Capacity.<br>
 The solution is created using 2 components:
 - Sentinel Workbook - Copilot for Security Optimizer
@@ -8,7 +10,29 @@ The solution is created using 2 components:
 
 ![Solution Architecture](./images/Copilot_For-Security_Optimizer_solution-architecture.png)
 
-The Copilot for Security Optimizer Sentinel solution has 3 distinct features. <br>It is used to view and deploy a schedule to a Copilot for Security Compute Capacity by applying and interpreting Azure Resource Tags.  In the event of a SOC operating in a more limited capacity than 24x7 such as 8x5 this can mean significant cost savings by allowing the playbook to scale the compute capacity according to the schedule that has been applied.<br>
+The Copilot for Security Optimizer Sentinel solution offers 3 core features:<br>
+
+1. View - Security teams can view existing scheduling (or lack there of) on a Compute Capacity, and displays predicted costs of the solution
+2. Modify - Security architects can add/modify existing schedules, view cost calculations based on the new schedule, and compare it with the existing config. This is achieved by applying a Resource Tag called: **CopilotforSecurityConfig**.
+
+    The CopilotforSecurityConfig tag holds the information required by the Playbook to apply separate configs across multiple compute capacities.
+
+Here is the structure of the Resource Tag:
+{<br>
+    'SCULimits': {<br>
+        'Min': 1, 'Max': 3<br>
+    },<br>
+    'Schedule': {<br>
+        'ActiveDays': [<br>
+            '1', '2', '3', '4'<br>
+        ],<br>
+        'ActiveStartHour': 8,<br>
+        'ActiveEndHour': 18,<br>
+        'TimeOffset': -5<br>
+    }<br>
+}<br>
+
+3. Apply - Finally, the Playbook/LogicApp runs hourly (5 minutes after the hour, to avoid conflict with other automations), to find resources with the CopilotforSecurityConfig tag applied, then for each compute capacity evaluates high usage schedule configuration to determine the correct SCU count, then applies if any changes need to be made.
 
 [Learn more about Copilot for Security](https://learn.microsoft.com/en-us/copilot/security/microsoft-security-copilot)<br>
 [Learn more about Playbooks (Logic Apps)](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview)<br>
@@ -37,6 +61,9 @@ Subscription Owner is required to create and apply a least-privilege custom role
 2. Assign the Copilot for Security Capacity Creator custom role, or Contributor built-in role to the Playbook's managed identity - https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity?tabs=consumption#assign-managed-identity-role-based-access-in-the-azure-portal
 
 3. Open the playbook in the Logic App Designer and ensure connections are displaying correctly<br><br>
+
+## Usage
+**Basic usage steps:**
 
 ## Screenshots
 **Workbook - View No Schedule**<br>
