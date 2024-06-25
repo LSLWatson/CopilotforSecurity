@@ -59,7 +59,9 @@ Property definitions:
 [Learn more about Workbooks](https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview)<br>
 
 ## Prerequisites
-Ideally you already have a Copilot for Security Compute Capacity deployed, if not you should considering deploying a compute capacity in the near future, as all capabilities of this solution rely on having a compute capacity already deployed.
+
+- Copilot for Security Compute Capacity - So we have something to which we can view/apply a schedule
+- Log Analytics Workspace (ideally Sentinel enabled) for operation of the Workbook
 
 Least-privilege resource deployment requires:
 - Workbook - Monitoring Contributor
