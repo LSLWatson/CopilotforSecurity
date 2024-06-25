@@ -68,7 +68,10 @@ Least-privilege resource deployment requires:
 - Playbook - Logic App Contributor
 
 Post-config requirements:
-Subscription Owner is required to create and apply a least-privilege custom role for the Playbook. You may choose to assign the Contributor role if you do not want to use a custom role.<br>
+- Subscription Owner is required to create and apply a least-privilege custom role for the Playbook. You may choose to assign the Contributor role if you do not want to use a custom role.<br>
+
+Usage requirements:
+- Contributor access of some kind is required to the Copilot for Security Compute Capacity for any users who will be modifying the schedule since it works by applying Resource Tags to the Compute Capacity.
 
 ## Deployment
 **Deploy Solution**
@@ -86,6 +89,14 @@ Subscription Owner is required to create and apply a least-privilege custom role
 
 ## Usage
 **Basic usage steps:**
+
+1. The Copilot for Security Optimizer workbook should now be present in your Sentinel workspace. If you don't have Sentinel access, or don't have Sentinel enabled, then you can find the Azure Workbook resource in your Sentinel resource group.
+
+2. Select a Copilot for Security Compute Capacity.  You should see if there is or is not a schedule applied to that Compute Capacity.
+3. Select the Edit tab, and select the desired schedule to review the cost changes based on your team's standard work hours.
+4. When ready, select the **Apply Configuration** button to deploy the Resource Tags.
+5. When the next hour rolls around, the Playbook/Logic app will trigger, evaluate the Resource Tag, and apply the appropriate SCU limit to the Compute Capacity.
+    - This can also be manually triggered if you'd like to enforce the change immediately.
 
 ## Screenshots
 **Workbook - View No Schedule**<br>
