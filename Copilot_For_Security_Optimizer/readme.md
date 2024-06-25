@@ -19,21 +19,21 @@ The Copilot for Security Optimizer Sentinel solution offers 3 core features:<br>
 
 Here is the structure of the Resource Tag:
 
-''''
-{<br>
-    'SCULimits': {<br>
-        'Min': 1, 'Max': 3<br>
-    },<br>
-    'Schedule': {<br>
-        'ActiveDays': [<br>
-            '1', '2', '3', '4'<br>
-        ],<br>
-        'ActiveStartHour': 8,<br>
-        'ActiveEndHour': 18,<br>
-        'TimeOffset': -5<br>
-    }<br>
-}<br>
-''''
+```json
+{
+    'SCULimits': {
+        'Min': 1, 'Max': 3
+    },
+    'Schedule': {
+        'ActiveDays': [
+            '1', '2', '3', '4'
+        ],
+        'ActiveStartHour': 8,
+        'ActiveEndHour': 18,
+        'TimeOffset': -5
+    }
+}
+```
 
 3. Apply - Finally, the Playbook/LogicApp runs hourly (5 minutes after the hour, to avoid conflict with other automations), to find resources with the CopilotforSecurityConfig tag applied, then for each compute capacity evaluates high usage schedule configuration to determine the correct SCU count, then applies if any changes need to be made.
 
