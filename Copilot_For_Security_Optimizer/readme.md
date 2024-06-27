@@ -42,7 +42,7 @@ Property definitions:
     - Min: SCU count applied for Low Usage days/times
     - Max: SCU count applied for High Usage days/times
 - Schedule
-    - ActiveDays: interger representations of days of the week:
+    - ActiveDays: integer representations of days of the week:
         - 0 = Sunday
         - 1 = Monday
         - 2 = Tuesday
@@ -54,15 +54,13 @@ Property definitions:
     - ActiveEndHour: for high usage days, time when Minimum SCU count should be applied
     - TimeOffset: Hour offset from UTC. This is leveraged to ensure CfS is operating in the desired local time, and is paired with the workbook to validate offset to local comparison.
 
-[Learn more about Copilot for Security](https://learn.microsoft.com/en-us/copilot/security/microsoft-security-copilot)<br>
-[Learn more about Playbooks (Logic Apps)](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview)<br>
-[Learn more about Workbooks](https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview)<br>
-
 ## Prerequisites
 
+### Azure Resource Requirements
 - Copilot for Security Compute Capacity - So we have something to which we can view/apply a schedule
 - Log Analytics Workspace (ideally Sentinel enabled) for operation of the Workbook
 
+### Azure RBAC Requirements
 Least-privilege resource deployment requires:
 - Workbook - Monitoring Contributor
 - Playbook - Logic App Contributor
@@ -97,6 +95,10 @@ Usage requirements:
 4. When ready, select the **Apply Configuration** button to deploy the Resource Tags.
 5. When the next hour rolls around, the Playbook/Logic app will trigger, evaluate the Resource Tag, and apply the appropriate SCU limit to the Compute Capacity.
     - This can also be manually triggered if you'd like to enforce the change immediately.
+
+[Learn more about Copilot for Security](https://learn.microsoft.com/en-us/copilot/security/microsoft-security-copilot)<br>
+[Learn more about Playbooks (Logic Apps)](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview)<br>
+[Learn more about Workbooks](https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview)<br>
 
 ## Screenshots
 **Workbook - View No Schedule**<br>
