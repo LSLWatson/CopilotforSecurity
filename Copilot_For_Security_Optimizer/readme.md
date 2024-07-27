@@ -29,11 +29,11 @@ Here is the structure of the Resource Tag:
         },
         "Schedule": {
             "ActiveDays": [
-                "1", "2", "3", "4"
+                1, 2, 3, 4
             ],
             "ActiveStartHour": 8,
             "ActiveEndHour": 18,
-            "TimeOffset": -5
+            "TimeOffset": -6
         }
     }
 ``` 
@@ -74,7 +74,9 @@ Usage requirements:
 ## Deployment
 **Deploy Solution**
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLSLWatson%2FCopilotForSecurity%2Fmain%2FCopilot_For_Security_Optimizer%2Fsolution%2Fazuredeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLSLWatson%2FCopilotForSecurity%2Fmain%2FCopilot_For_Security_Optimizer%2Fsolution%2Fazuredeploy.json)<br>
+
+Note: During deployment, the selected Playbook Resource Group must be different than the Sentinel Resource Group.
 
 
 ## Post-deployment
