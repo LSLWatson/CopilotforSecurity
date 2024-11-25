@@ -1,0 +1,19 @@
+Descriptor:
+  Name: CustomKQLDefenderQuery
+  DisplayName: Custom KQL Defender Query
+  Description: Executes a custom KQL query in Defender
+
+SkillGroups:
+  - Format: KQL
+    Skills:
+      - Name: CustomKQLDefenderQuery
+        DisplayName: Custom KQL Defender Query
+        Description: Executes a custom KQL query, and provides the results
+        Inputs:
+        - Name: query
+          Description: The query to execute
+          Required: true
+        Settings:
+          Target: Defender
+          Template: |-
+            {{query}}
