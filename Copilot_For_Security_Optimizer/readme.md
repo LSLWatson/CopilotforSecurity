@@ -1,9 +1,9 @@
-# CopilotforSecurity-Optimizer
+# CopilotforSecurity-SCU-Optimizer
 Author: Lachlan Watson
 
 This solution will allow you to view and control the Copilot for Security Compute Capacity SCUs based on a schedule.<br>
 The solution is created using 2 core components:
-- Sentinel Workbook - Copilot for Security Optimizer
+- Sentinel Workbook - Copilot for Security SCU Optimizer
 - Playbook (Logic App) - Copilot for Security Scaler
 
 In the event of a SOC operating in a more limited capacity than 24x7 such as 8x5 this can mean significant cost savings by allowing the playbook to scale the compute capacity according to the schedule that has been applied while still taking advantage of the robust capabilities from Copilot for Security.<br>
